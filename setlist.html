@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Setlist App | Matthew Huskey</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/setlist.css">
+    
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet" href="assets/stylesheets/jquery-ui.min.css">
+  </head>
+  
+  <body>
+    <!-- Main Content -->
+    <main role="main">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h1>Setlist</h1>
+            
+            <section class="instructions">
+              <p class="text-center">
+                <a class="btn btn-info" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  Instructions
+                </a>
+              </p>
+              <div class="col-lg-10 offset-lg-1 collapse" id="collapseExample">
+                <div class="card card-body text-white bg-info">
+                  <p>After adding songs, breaks, or encores, drag any of the elements to change the order.</p>
+                  
+                  <p>Drag and drop any song, break, or encore to delete it.</p>
+                  
+                  <p>On a laptop or desktop, double click or double tap on any song, break, or encore to delete it.</p>
+                </div>
+              </div>
+            </section>
+          </div> <!-- End of setlist column -->
+        </div> <!-- End of row -->
+        
+        <div class="row">
+          <div class="col-xs-10 col-xs-2 col-sm-12 col-md-4 offset-md-0">
+            <section class="add-song">
+              <h2>Add Song</h2>
+              
+              <div class="alert alert-danger text-center" id="warning" role="alert">
+                Song name cannot be blank!
+              </div>
+              
+              <form id="song-form">
+                <input type="text" class="form-control" id="song-name" placeholder="Song name...">
+                <button type="button" class="btn btn-primary btn-block" id="song-button">Add Song</button>
+                <button type="button" class="btn btn-break btn-block" id="break-button">Add Break</button>
+                <button type="button" class="btn btn-encore btn-block" id="encore-button">Add Encore</button>
+              </form>
+            </section>
+          </div> <!-- End of add song column -->
+          
+          <div class="col-xs-10 col-xs-2 col-sm-12 col-md-5 offset-md-0 setlist">
+            <section>
+              <h2>Songs</h2>
+              <ol class="songs">
+              </ol>
+            </section>
+          </div> <!-- End of setlist column -->
+          
+          <div class="col-xs-8 col-xs-4 col-sm-12 col-md-3 offset-md-0 delete">
+            <section>
+              <h2>Delete</h2>
+              <div class="text-center" id="droppable">
+                <div id="delete-div">
+                  <br />
+                  <h4>Drop to Delete</h4>
+                </div>
+              </div>
+            </section>
+          </div> <!-- End of delete column -->
+        </div> <!-- End of row -->
+      </div> <!-- End of container -->
+    </main>
+    
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    
+    <!-- Popper JS -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    
+    <!-- jQuery UI -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    
+    <!-- Touch Punch -->
+    <script src="assets/javascripts/jquery.ui.touch-punch.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script type="text/javascript" src="assets/javascripts/setlist.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
