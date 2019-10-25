@@ -122,6 +122,19 @@ ol h3 {
   border-color: #6A44C9;
 }
 
+.btn-print {
+  background-color: #EA8C10;
+  color: #FFF;
+  border-color: #E16D02;
+}
+.btn-print:hover,
+.btn-print:focus,
+.btn-print:active {
+  background-color: #E16D02;
+  color: #FFF;
+  border-color: #EA8C10;
+}
+
 #warning {
   display: none;
   font-size: 1.1rem;

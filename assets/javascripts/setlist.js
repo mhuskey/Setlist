@@ -75,6 +75,19 @@ $("document").ready(function() {
       $(this).remove();
     });
   });
+  
+  // Print list of songs
+  $("#print-button").on("click", function () {
+    var songList = $(".setlist").html();
+    var printWindow = window.open('', "Setlist",
+    "menubar=no");
+    printWindow.document.write('<html><head><title>Print Setlist</title>');
+    printWindow.document.write('<link rel="stylesheet" type="text/css" href="assets/stylesheets/print-setlist.css">')
+    printWindow.document.write('</head><body>');
+    printWindow.document.write(songList);
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+  });
 });
 
 // Add song function

@@ -1,0 +1,19 @@
+/* universal */
+body, html {
+  height: 100%;
+  font-family: "system-ui", sans-serif;
+  background-color: #11151C;
+  color: #DCDCDC;
+  font-size: 1.1rem;
+}
+ol h3 {
+  padding: 5px 0 5px 4px;
+  margin: 8px 0;
+  text-decoration: underline;
+  font-size: 1.2rem;
+}
+
+li {
+  padding: 5px 0 5px 4px;
+  margin: 4px 0;
+}
