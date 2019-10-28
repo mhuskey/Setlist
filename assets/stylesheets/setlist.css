@@ -20,6 +20,47 @@ h3 {
   font-size: 1.1rem;
 }
 
+h4 {
+  font-size: 2rem;
+}
+
+button {
+  margin: 10px 0;
+}
+
+hr {
+  height: 3px;
+  margin: -0.05px 0;
+  background-color: #F2F2F2;
+}
+
+code {
+  color: #FBC052;
+}
+
+textarea {
+  background-color: #11151C;
+  color: #11151C;
+  font-size: 1px;
+}
+
+/* Modals */
+.modal {
+  color: #DCDCDC;
+}
+
+.modal-content {
+  background-color: #0A1F2D;
+}
+
+#exportSongsModal {
+  background-color: rgba(17, 21, 28, .7);
+}
+
+#performanceModal {
+  background-color: #11151C;
+}
+
 /* Song input field */
 input {
   font-size: 1rem;
@@ -50,7 +91,6 @@ ol h3 {
 }
 .encore {
   background-color: rgba(106, 68, 201, 0.7);
-  /*font-weight: bold;*/
 }
 
 .add-song {
@@ -68,13 +108,16 @@ ol h3 {
   border-radius: 8px;
 }
 
+/* Media queries */
 @media (max-width: 576px) {
   ol {
+    /* increase scroll width for mobile */
     width: 90%;
   }
 }
 @media (max-width: 767px) {
   #delete-div {
+    /* reduce height for mobile */
     height: 175px;
   }
 }
@@ -82,17 +125,6 @@ ol h3 {
   #delete-div {
     height: 400px;
   }
-}
-
-/* Button margins */
-#song-button {
-  margin: 20px 0;
-}
-#break-button {
-  margin: 20px 0;
-}
-#encore-button {
-  margin: 20px 0;
 }
 
 /* Button colors */
@@ -133,6 +165,19 @@ ol h3 {
   background-color: #E16D02;
   color: #FFF;
   border-color: #EA8C10;
+}
+
+.btn-export {
+  background-color: #C944A3;
+  color: #FFF;
+  border-color: #C02595;
+}
+.btn-export:hover,
+.btn-export:focus,
+.btn-export:active {
+  background-color: #C02595;
+  color: #FFF;
+  border-color: #C944A3;
 }
 
 #warning {
