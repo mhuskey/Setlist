@@ -21,11 +21,51 @@ $("document").ready(function() {
   });
   $(".songs").disableSelection();
   
+  // Save songs to local storage
+  $("#save-button").click(function() {
+    var songsArray = [];
+    
+    var lengthOfSongs = $(".songs > *").length;
+    for (var i = 0; i < lengthOfSongs; i++) {
+      // Add each song to the array
+      songsArray += $($("ol > *")[i]).text();
+      // Add a comma to the end of each song
+      songsArray += ",";
+    }
+    // Remove last comma from the last song
+    songsArray = songsArray.slice(0, -1);
+    // Save data
+    localStorage["songsArray"] = JSON.stringify(songsArray);
+  });
+  
+  // Load songs from local storage
+  $("#load-button").click(function() {
+    // Check if songsArray exists in local storage
+    var localData = localStorage.getItem("songsArray");
+    // If it exists then parse, otherwise it is an empty array
+    var storedSongs = localData ? JSON.parse(localData) : [];
+    
+    // Check if storedSongs is empty before using it
+    if (storedSongs.length !== 0) {
+      // Remove any songs in the list
+      $(".songs > *").remove();
+      
+      // Convert storedSongs to an array and remove commas
+      var storedArraySongs = storedSongs.split(",");
+      
+      var lengthOfSongs = $(".songs > *").length;
+      appendSongsToList(storedArraySongs);
+    } else {
+      // Show warning that no songs are saved
+      noSavedSongs();
+    }
+  });
+  
   // Add song to list after clicking button
   $("#song-button").click(function() {
     // Reject empty string
     if ($("#song-name").val() === "") {
-      showWarning();
+      noSongName();
     } else {
       addSong();
     }
@@ -36,7 +76,7 @@ $("document").ready(function() {
     if (e.which === 13) {
       // Reject empty string
       if ($("#song-name").val() === "") {
-        showWarning();
+        noSongName();
         return false;
       } else {
         addSong();
@@ -58,7 +98,7 @@ $("document").ready(function() {
   });
   
   // Print list of songs
-  $("#print-button").on("click", function () {
+  $("#print-button").click(function () {
     var songList = $(".setlist").html();
     var printWindow = window.open('', "Setlist",
     "menubar=no");
@@ -180,16 +220,7 @@ function importSongs() {
     urlString = urlString.replace(/%22/g,"\"");
     // Convert formatted songs to an array and remove commas
     var urlSongs = urlString.split(",");
-    for (var i = 0; i < urlSongs.length; i++) {
-      // Loop over array and append each item to the list of songs
-      if (urlSongs[i] === "*Break*") {
-        $("ol").append("<h3 class='break text-center'>" + urlSongs[i] + "</h3>");
-      } else if (urlSongs[i] === "*Encore*") {
-        $("ol").append("<h3 class='encore text-center'>" + urlSongs[i] + "</h3>");
-      } else {
-        $("ol").append("<li class='text-center'>" + urlSongs[i] + "</li>");
-      }
-    }
+    appendSongsToList(urlSongs);
   }
 }
 
@@ -201,17 +232,36 @@ function addSong() {
   $("#song-name").val("");
 }
 
-// Highlight effect function
-function showWarning() {
+// Empty song name warning
+function noSongName() {
   // Run the effect
-  $("#warning").show(500, callback);
+  $("#no-song-name").show(500, callback("#no-song-name"));
 };
 
+// No saved songs found warning
+function noSavedSongs() {
+  // Run the effect
+  $("#no-saved-songs").show(500, callback("#no-saved-songs"));
+}
+
 // Fadeout message and make its <div> hidden
-function callback() {
+function callback(id) {
   setTimeout(function() {
-    $("#warning").fadeOut(500, function() {
-      $("#warning:visible").removeAttr("style");
+    $(id).fadeOut(500, function() {
+      $(id + ":visible").removeAttr("style");
     });
   }, 2000);
 };
+
+function appendSongsToList(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === "*Break*") {
+      // Loop over array and append each item to the list of songs
+      $("ol").append("<h3 class='break text-center'>" + arr[i] + "</h3>");
+    } else if (arr[i] === "*Encore*") {
+      $("ol").append("<h3 class='encore text-center'>" + arr[i] + "</h3>");
+    } else {
+      $("ol").append("<li class='text-center'>" + arr[i] + "</li>");
+    }
+  }
+}
