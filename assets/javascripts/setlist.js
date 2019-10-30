@@ -165,6 +165,8 @@ $("document").ready(function() {
   
   // Open performance modal
   $("#performance-button").click(function() {
+    // Disable clicks and touches so it is easier to scroll
+    $("#performanceModal").disableSelection();
     // Reset performance song list
     $("#performanceSongList").empty();
     // Get list of songs from .songs
@@ -227,7 +229,8 @@ function importSongs() {
 // Add song function
 function addSong() {
   var songName = $("#song-name").val();
-  $("ol").append("<li class='text-center'>" + songName + "</li>");
+  // <div> is a hack to display list property with Firefox
+  $("ol").append("<li><div class='text-center'>" + songName + "</div></li>");
   // Clear text box after song is added
   $("#song-name").val("");
 }
@@ -261,7 +264,8 @@ function appendSongsToList(arr) {
     } else if (arr[i] === "*Encore*") {
       $("ol").append("<h3 class='encore text-center'>" + arr[i] + "</h3>");
     } else {
-      $("ol").append("<li class='text-center'>" + arr[i] + "</li>");
+      // <div> is a hack to display list property with Firefox
+      $("ol").append("<li><div class='text-center'>" + arr[i] + "</div></li>");
     }
   }
 }
