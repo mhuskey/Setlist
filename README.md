@@ -20,4 +20,4 @@ Setlist runs in a browser and does not require a server. Persistence is handled 
 ## Usage
 1. Clone the app:
  `git clone https://github.com/mhuskey/Setlist.git`
-2. Open the HTML file in a browser.
+2. Open the `setlist.html` file in a browser.
